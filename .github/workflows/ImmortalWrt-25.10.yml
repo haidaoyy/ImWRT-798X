@@ -153,16 +153,7 @@ jobs:
               console.log("第一次发布或无旧文件，跳过删除");
             }
 
-      - name: 上传至 WebDAV
-        if: steps.organize.outputs.status == 'success' && env.WEBDAV_URL != ''
-        run: |
-          cd ${{ env.FIRMWARE_PATH }}
-          for file in *; do
-            [ -f "$file" ] && {
-              curl -u "${{ env.WEBDAV_USER }}:${{ env.WEBDAV_PASS }}" -X DELETE "${{ env.WEBDAV_URL }}/$file" || true
-              curl -k --retry 3 --retry-delay 5 -u "${{ env.WEBDAV_USER }}:${{ env.WEBDAV_PASS }}" -T "$file" "${{ env.WEBDAV_URL }}/$file"
-            }
-          done
+          
 
       - name: 发布至 GitHub Release
         uses: softprops/action-gh-release@v2
