@@ -9,6 +9,17 @@ on:
       - '.github/workflows/build-asr3000.yml'
       - 'asr3000.config'
 
+
+
+env:
+  CONFIG_FILE: asr3000.config
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true
+  UPLOAD_RELEASE: true
+  TZ: Asia/Shanghai
+
+
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -39,7 +50,7 @@ jobs:
 
       - name: Load custom config
         run: |
-          cp ../asr3000.config openwrt/.config
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
           cd openwrt
           make defconfig
 
