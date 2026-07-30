@@ -64,10 +64,7 @@ jobs:
       - name: 更新 Feeds & 执行 DIY 脚本
         run: |
           cd openwrt
-          [ -f "$GITHUB_WORKSPACE/$FEEDS_CONF" ] && mv "$GITHUB_WORKSPACE/$FEEDS_CONF" ./feeds.conf.default
-          chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH && $GITHUB_WORKSPACE/$DIY_P1_SH
           ./scripts/feeds update -a && ./scripts/feeds install -a
-          chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH && $GITHUB_WORKSPACE/$DIY_P2_SH
 
       - name: 生成 .config & 下载软件包
         run: |
