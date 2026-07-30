@@ -8,10 +8,7 @@ on:
         type: choice
         required: true
         options:
-          - cmcc_rax3000m
-          - xiaomi_mi-router-ax3000t
-          - glinet_gl-mt3000
-          - xiaomi_redmi-router-ax6000-stock
+          - abt_asr3000
 
 env:
   REPO_URL: https://github.com/chasey-dev/immortalwrt-mt798x-rebase
