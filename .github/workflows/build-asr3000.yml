@@ -54,7 +54,7 @@ jobs:
         run: |
           [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
           [ -e $DTS_FILE ] && mv $DTS_FILE openwrt/target/linux/mediatek/dts/mt7981b-abt-asr3000.dts
-          [ -e $MK_FILE ] && mv $DTS_FILE openwrt/target/linux/mediatek/image/filogic.mk
+          [ -e $MK_FILE ] && mv $MK_FILE openwrt/target/linux/mediatek/image/filogic.mk
           cd openwrt
           make defconfig
 
