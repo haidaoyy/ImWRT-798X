@@ -12,7 +12,7 @@ on:
 
 
 env:
-  CONFIG_FILE: asr3000.config
+  CONFIG_FILE: asr3000bin.config
   DTS_FILE: mt7981b-abt-asr3000.dts
   MK_FILE: filogic.mk
   UPLOAD_BIN_DIR: false
