@@ -7,12 +7,12 @@ on:
     branches: [ "main" ]
     paths:
       - '.github/workflows/build-asr3000.yml'
-      - 'asr3000itb.config'
+      - 'asr3000bin.config'
 
 
 
 env:
-  CONFIG_FILE: asr3000itb.config
+  CONFIG_FILE: asr3000bin.config
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
