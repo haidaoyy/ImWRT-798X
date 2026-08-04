@@ -6,13 +6,13 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - '.github/workflows/build-asr3000.yml'
-      - 'asr3000bin.config'
+      - '.github/workflows/build-asr3000itb.yml'
+      - 'asr3000itb.config'
 
 
 
 env:
-  CONFIG_FILE: asr3000bin.config
+  CONFIG_FILE: asr3000itb.config
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
