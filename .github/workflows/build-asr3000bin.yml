@@ -1,20 +1,18 @@
 ---
-name: Build ImmortalWrt ASR3000
+name: Build ImmortalWrt ASR3000bin
 
 on:
   workflow_dispatch:  # 支持手动触发
   push:
     branches: [ "main" ]
     paths:
-      - '.github/workflows/build-asr3000.yml'
-      - 'asr3000.config'
+      - '.github/workflows/build-asr3000bin.yml'
+      - 'asr3000bin.config'
 
 
 
 env:
   CONFIG_FILE: asr3000bin.config
-  DTS_FILE: mt7981b-abt-asr3000.dts
-  MK_FILE: filogic.mk
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -45,7 +43,7 @@ jobs:
 
       - name: Clone ImmortalWrt source
         run: |
-          git clone -b 25.12 --depth=1 https://github.com/chasey-dev/immortalwrt-mt798x-rebase.git openwrt
+          git clone -b openwrt-24.10-6.6 --depth=1 https://github.com/Yuzhii0718/immortalwrt-mt798x-6.6-padavanonly.git openwrt
           cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
@@ -53,8 +51,6 @@ jobs:
       - name: Load custom config
         run: |
           [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-          [ -e $DTS_FILE ] && mv $DTS_FILE openwrt/target/linux/mediatek/dts/mt7981b-abt-asr3000.dts
-          [ -e $MK_FILE ] && mv $MK_FILE openwrt/target/linux/mediatek/image/filogic.mk
           cd openwrt
           make defconfig
 
